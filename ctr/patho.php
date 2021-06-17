@@ -1,13 +1,24 @@
 <?php
     require('../config/init.php');
-    $request_method = $_SERVER["REQUEST_METHOD"];
-    
+    $requestmethod = $_SERVER["REQUEST_METHOD"];
+
+    /**
+     * Endpoint : "/patho" - retourne toutes les pathologies
+     */
     function getDB($q,$bdd)
     {
-        $PdoStatement = $bdd->prepare($q);
-        $status = $PdoStatement->execute();
-        if($status == false) var_dump($PdoStatement->errorInfo());
-        return $PdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        $strErrorDesc = '';
+        $arrQueryStringParams = $this->getQueryStringParams();
+
+
+        if (strtoupper($requestMethod) == 'GET') {
+            $PdoStatement = $bdd->prepare($q);
+            $status = $PdoStatement->execute();
+            if($status == false) var_dump($PdoStatement->errorInfo());
+            return $PdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        
+        }
+        
     }
 
     $query1 = "SELECT symptome.desc, patho.idP 
