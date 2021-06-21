@@ -1,4 +1,5 @@
 <?php
+include_once('../config/init.php');
 
 //keywords (idK, "name");
 //keySympt (idK, idS)
@@ -12,7 +13,6 @@ class database
   private $bdd;
 
   public function const(){
-    include_once('../config/init.php');
     try {
       $this->bdd = new PDO("pgsql:host=localhost;port=5432;dbname=acudb", "postgres-tli", "tli");
     }

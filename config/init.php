@@ -5,13 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// ou ça sur PHP < 5.4.0
-if(session_id() == '') {
-    session_start();
-}
-header("Cache-Control: no-cache");
-
-// Chargement Smarty et Defines
+// Chargement Defines
 require_once('defines.inc.php');
 
 // Connexion Database
